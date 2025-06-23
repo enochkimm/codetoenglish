@@ -2,23 +2,55 @@ def translate_line(line):
     line = line.strip()
 
     if line.startswith("print("):
-        content = line[6:-1]
-        return f"Prints {content}", "Outputs something to the screen."
-
+        return "Prints text", "Outputs to console"
+    
     elif line.startswith("for "):
-        return "Starts a loop", "Loops over a list, range, or iterable."
-
+        return "Starts loop", "Repeats over items"
+    
+    elif line.startswith("while "):
+        return "While loop", "Repeats while condition true"
+    
     elif line.startswith("if "):
-        return "Checks a condition", "Runs code only if the condition is true."
-
+        return "Checks condition", "Runs if true"
+    
+    elif line.startswith("elif "):
+        return "Else-if check", "Alternate condition"
+    
+    elif line.startswith("else"):
+        return "Else block", "Runs if previous failed"
+    
     elif line.startswith("def "):
-        return "Defines a function", "Creates a reusable block of code."
-
+        return "Defines function", "Creates reusable code"
+    
     elif line.startswith("return "):
-        return "Returns a value", "Sends a value back from a function."
-
+        return "Returns value", "Exits with result"
+    
+    elif line.startswith("import "):
+        return "Imports module", "Loads external code"
+    
+    elif line.startswith("from "):
+        return "Imports part", "Loads specific function/module"
+    
+    elif line.startswith("class "):
+        return "Defines class", "Creates object blueprint"
+    
+    elif "try:" in line:
+        return "Try block", "Attempts risky code"
+    
+    elif "except" in line:
+        return "Except block", "Handles error"
+    
+    elif "with open(" in line:
+        return "File open", "Handles file safely"
+    
+    elif "[" in line and "]" in line and "for" in line:
+        return "List comp", "Compact loop for list"
+    
     elif "=" in line and "==" not in line:
-        return "Assigns a value", "Stores a value in a variable."
-
+        return "Assigns value", "Stores data"
+    
+    elif "==" in line:
+        return "Equality check", "Compares values"
+    
     else:
-        return "Performs an action", "No matching rule — might need GPT-4 or advanced logic."
+        return "Unknown", None 
