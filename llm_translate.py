@@ -1,8 +1,11 @@
-import os
-from openai import OpenAI
 from dotenv import load_dotenv
-
 load_dotenv()
+
+import os
+print("DEBUG: OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
+
+from openai import OpenAI
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def explain_with_gpt(line):
